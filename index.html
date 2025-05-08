@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXEL FORGE - Game Jam 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#team">Equipo</a></li>
+            <li><a href="#categories">Categorías</a></li>
+            <li><a href="#technical">Técnico</a></li>
+            <li><a href="#rules">Reglas</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-sun"></i>
+        </button>
+    </nav>
+
+    <div class="container">
+        <h1>PIXEL FORGE</h1>
+        <p style="text-align: center; margin-bottom: 30px;">Game Jam 2025 - Desarrolla tu juego en 48 horas</p>
+
+        <form id="registroForm">
+            <!-- Datos del Equipo -->
+            <div class="form-section" id="team">
+                <h2>Datos del Equipo</h2>
+                
+                <div class="form-group">
+                    <label for="nombreEquipo" class="required-label">Nombre del Equipo/Estudio</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="text" id="nombreEquipo" name="nombreEquipo" maxlength="30" placeholder="Nombre de tu equipo o estudio" required>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div class="error-message" id="nombreEquipo-error">El nombre del equipo es obligatorio (máximo 30 caracteres).</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombreLider" class="required-label">Nombre del Líder</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="text" id="nombreLider" name="nombreLider" placeholder="Nombre completo del responsable" required>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div class="error-message" id="nombreLider-error">Por favor ingresa el nombre del líder.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tamanoEquipo" class="required-label">Tamaño del Equipo</label>
+                    <div style="display: flex; align-items: center;">
+                        <select id="tamanoEquipo" name="tamanoEquipo" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="solo">Solo (1 persona)</option>
+                            <option value="pequeno">Pequeño (2-3 personas)</option>
+                            <option value="mediano">Mediano (4-6 personas)</option>
+                            <option value="grande">Grande (7+ personas)</option>
+                        </select>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div class="error-message" id="tamanoEquipo-error">Debe seleccionar el tamaño del equipo.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailContacto" class="required-label">Email de Contacto</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="email" id="emailContacto" name="emailContacto" placeholder="tu@email.com" required>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div class="error-message" id="emailContacto-error">Ingrese un email válido.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="experiencia" class="required-label">Experiencia en Desarrollo</label>
+                    <div class="range-container">
+                        <input type="range" id="experiencia" name="experiencia" min="0" max="10" value="5" required>
+                        <div class="range-labels">
+                            <span>Principiante</span>
+                            <span>Intermedio</span>
+                            <span>Experto</span>
+                        </div>
+                        <div class="experience-value" id="experienciaValor">5 años</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="logoEquipo" class="required-label">Logo del Equipo</label>
+                    <label for="logoEquipo" class="file-upload-label">
+                        <i class="fas fa-upload"></i> Seleccionar logo (JPG/PNG, máx. 2MB)
+                    </label>
+                    <input type="file" id="logoEquipo" name="logoEquipo" accept=".jpg,.jpeg,.png" required>
+                    <img id="logoPreview" class="profile-preview" alt="Vista previa de logo">
+                    <div class="error-message" id="logoEquipo-error">El logo es obligatorio (JPG/PNG, máx. 2MB).</div>
+                </div>
+            </div>
+
+            <!-- Categorías de Juego -->
+            <div class="form-section" id="categories">
+                <h2>Categoría del Juego</h2>
+                <p>Selecciona el género principal de tu juego:</p>
+                
+                <div class="categories-grid">
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaAccion" name="categorias" value="accion" class="category-checkbox">
+                        <label for="categoriaAccion">🎮 Acción/Aventura</label>
+                        <div class="category-tooltip">Juegos centrados en desafíos de reflejos, combate y exploración.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaPuzzle" name="categorias" value="puzzle" class="category-checkbox">
+                        <label for="categoriaPuzzle">🧩 Puzzle</label>
+                        <div class="category-tooltip">Juegos de rompecabezas, lógica y resolución de problemas.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaEstrategia" name="categorias" value="estrategia" class="category-checkbox">
+                        <label for="categoriaEstrategia">♟️ Estrategia</label>
+                        <div class="category-tooltip">Juegos que requieren planificación táctica y toma de decisiones complejas.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaRPG" name="categorias" value="rpg" class="category-checkbox">
+                        <label for="categoriaRPG">⚔️ RPG</label>
+                        <div class="category-tooltip">Juegos de rol con progresión de personajes, narrativa y elementos de fantasía.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaHorror" name="categorias" value="horror" class="category-checkbox">
+                        <label for="categoriaHorror">👻 Horror</label>
+                        <div class="category-tooltip">Juegos centrados en crear miedo, tensión y narrativas inquietantes.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaSimulacion" name="categorias" value="simulacion" class="category-checkbox">
+                        <label for="categoriaSimulacion">🌍 Simulación</label>
+                        <div class="category-tooltip">Juegos que simulan actividades o sistemas del mundo real.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaPlataformas" name="categorias" value="plataformas" class="category-checkbox">
+                        <label for="categoriaPlataformas">🏃 Plataformas</label>
+                        <div class="category-tooltip">Juegos basados en saltos precisos y superación de obstáculos.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaRoguelike" name="categorias" value="roguelike" class="category-checkbox">
+                        <label for="categoriaRoguelike">🎲 Roguelike</label>
+                        <div class="category-tooltip">Juegos con generación procedural, permadeath y alta rejugabilidad.</div>
+                    </div>
+
+                    <input type="checkbox" id="categoriaExperimental" name="categorias" value="experimental" class="category-checkbox">
+                        <label for="categoriaExperimental">🔬 Experimental</label>
+                        <div class="category-tooltip">Juegos innovadores que desafían convenciones y exploran nuevas mecánicas.</div>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="descripcionJuego" class="required-label">Descripción Breve del Concepto</label>
+                    <textarea id="descripcionJuego" name="descripcionJuego" rows="3" placeholder="Describe brevemente el concepto principal de tu juego (máx. 200 caracteres)" maxlength="200" required></textarea>
+                    <div class="error-message" id="descripcionJuego-error">La descripción del juego es obligatoria.</div>
+                </div>
+            </div>
+
+            <!-- Requisitos Técnicos -->
+            <div class="form-section" id="technical">
+                <h2>Requisitos Técnicos</h2>
+                
+                <div class="form-group">
+                    <label class="required-label">Plataformas Objetivo</label>
+                    <p class="form-description">Selecciona las plataformas para las que planeas desarrollar tu juego:</p>
+                    <div class="platform-buttons">
+                        <button type="button" class="platform-btn" data-platform="windows">
+                            <i class="fab fa-windows"></i> Windows
+                        </button>
+                        <button type="button" class="platform-btn" data-platform="mac">
+                            <i class="fab fa-apple"></i> macOS
+                        </button>
+                        <button type="button" class="platform-btn" data-platform="linux">
+                            <i class="fab fa-linux"></i> Linux
+                        </button>
+                        <button type="button" class="platform-btn" data-platform="web">
+                            <i class="fas fa-globe"></i> Web
+                        </button>
+                        <button type="button" class="platform-btn" data-platform="android">
+                            <i class="fab fa-android"></i> Android
+                        </button>
+                        <button type="button" class="platform-btn" data-platform="ios">
+                            <i class="fab fa-apple"></i> iOS
+                        </button>
+                    </div>
+                    <input type="hidden" id="plataformasSeleccionadas" name="plataformasSeleccionadas" required>
+                    <div class="error-message" id="plataformas-error">Debes seleccionar al menos una plataforma.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="required-label">Motor de Desarrollo</label>
+                    <p class="form-description">Selecciona el motor o framework que utilizarás:</p>
+                    <div class="engine-container">
+                        <label class="engine-label">
+                            <input type="radio" name="motor" value="unity" class="engine-radio" required>
+                            <div class="engine-icon"><i class="fab fa-unity"></i></div>
+                            <span>Unity</span>
+                            <span class="engine-info">Motor 3D/2D multiplataforma</span>
+                        </label>
+                        
+                        <label class="engine-label">
+                            <input type="radio" name="motor" value="unreal" class="engine-radio">
+                            <div class="engine-icon"><i class="fas fa-gamepad"></i></div>
+                            <span>Unreal Engine</span>
+                            <span class="engine-info">Motor 3D de alto rendimiento</span>
+                        </label>
+                        
+                        <label class="engine-label">
+                            <input type="radio" name="motor" value="godot" class="engine-radio">
+                            <div class="engine-icon"><i class="fas fa-cube"></i></div>
+                            <span>Godot</span>
+                            <span class="engine-info">Motor open source 2D/3D</span>
+                        </label>
+                        
+                        <label class="engine-label">
+                            <input type="radio" name="motor" value="gamemaker" class="engine-radio">
+                            <div class="engine-icon"><i class="fas fa-code"></i></div>
+                            <span>GameMaker</span>
+                            <span class="engine-info">Motor especializado en 2D</span>
+                        </label>
+                        
+                        <label class="engine-label">
+                            <input type="radio" name="motor" value="custom" class="engine-radio">
+                            <div class="engine-icon"><i class="fas fa-wrench"></i></div>
+                            <span>Motor Propio</span>
+                            <span class="engine-info">Desarrollo desde cero</span>
+                        </label>
+                        
+                        <label class="engine-label">
+                            <input type="radio" name="motor" value="otro" class="engine-radio">
+                            <div class="engine-icon"><i class="fas fa-ellipsis-h"></i></div>
+                            <span>Otro</span>
+                            <span class="engine-info">Especificar en comentarios</span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="motor-error">Selecciona un motor de desarrollo.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="portfolioDemo" class="required-label">Portafolio o Demo Anterior</label>
+                    <p class="form-description">Sube un archivo ZIP con evidencia de tu trabajo anterior (máx. 10MB)</p>
+                    <label for="portfolioDemo" class="file-upload-label">
+                        <i class="fas fa-upload"></i> Seleccionar archivo (ZIP, máx. 10MB)
+                    </label>
+                    <input type="file" id="portfolioDemo" name="portfolioDemo" accept=".zip" required>
+                    <div class="file-preview" id="portfolioPreview"></div>
+                    <div class="error-message" id="portfolioDemo-error">Debes incluir un portafolio o demo (ZIP, máx. 10MB).</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comentariosTecnicos">Comentarios Técnicos Adicionales</label>
+                    <textarea id="comentariosTecnicos" name="comentariosTecnicos" rows="3" placeholder="Describe cualquier detalle técnico adicional que consideres relevante para tu proyecto"></textarea>
+                </div>
+            </div>
+            
+            <!-- Reglas y Acuerdos -->
+            <div class="form-section" id="rules">
+                <h2>Reglas y Acuerdos</h2>
+                
+                <div class="rules-container">
+                    <p><strong>Reglas de la Game Jam:</strong></p>
+                    <ol>
+                        <li>El desarrollo debe realizarse durante las 48 horas oficiales del evento.</li>
+                        <li>Puedes usar recursos de terceros (sprites, modelos, música) siempre que tengas licencia para usarlos y los acredites adecuadamente.</li>
+                        <li>El tema será anunciado al inicio del evento y tu juego debe incorporarlo.</li>
+                        <li>Al finalizar, deberás subir tu juego completo y su código fuente.</li>
+                        <li>Los juegos deben ser aptos para todo público (clasificación PEGI 12 o inferior).</li>
+                    </ol>
+                    
+                    <p style="margin-top: 20px;"><strong>Derechos y Propiedad Intelectual:</strong></p>
+                    <ul>
+                        <li>Mantienes todos los derechos de tu juego y puedes comercializarlo posteriormente.</li>
+                        <li>Aceptas que tu juego sea jugado y exhibido durante el evento de evaluación.</li>
+                        <li>Nos otorgas permiso para mostrar capturas o videos de tu juego con propósitos promocionales.</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <div style="display: flex; align-items: flex-start;">
+                        <input type="checkbox" id="aceptarReglas" name="aceptarReglas" required style="width: auto; margin-right: 10px; margin-top: 5px;">
+                        <label for="aceptarReglas" class="required-label">He leído y acepto las reglas de la Game Jam y los términos sobre propiedad intelectual.</label>
+                    </div>
+                    <div class="error-message" id="aceptarReglas-error">Debes aceptar las reglas para participar.</div>
+                </div>
+                
+                <div class="form-group">
+                    <div style="display: flex; align-items: flex-start;">
+                        <input type="checkbox" id="aceptarComunicaciones" name="aceptarComunicaciones" style="width: auto; margin-right: 10px; margin-top: 5px;">
+                        <label for="aceptarComunicaciones">Deseo recibir comunicaciones sobre futuros eventos, tutoriales y noticias relacionadas.</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botones de envío -->
+            <div class="buttons-container">
+                <button type="reset" id="resetBtn">
+                    <i class="fas fa-trash-alt"></i> Limpiar Formulario
+                </button>
+                <div class="loader" id="submitLoader"></div>
+                <button type="submit" id="submitBtn">
+                    <i class="fas fa-rocket"></i> Registrar Participación
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Contador de tiempo restante -->
+    <div class="countdown">
+        <div class="countdown-title">Tiempo Restante para el Inicio</div>
+        <div class="countdown-time">
+            <div class="time-unit">
+                <div class="time-number" id="dias">24</div>
+                <div class="time-label">Días</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-number" id="horas">12</div>
+                <div class="time-label">Horas</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-number" id="minutos">45</div>
+                <div class="time-label">Min</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-number" id="segundos">30</div>
+                <div class="time-label">Seg</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contador de participantes -->
+    <div class="counter" id="participantesCounter">
+        <div class="counter-number" id="totalParticipantes">32</div>
+        <div class="counter-text">Equipos Registrados</div>
+    </div>
+    
+    <!-- Overlay para tabla de registros -->
+    <div class="overlay" id="registrosOverlay">
+        <button class="close-btn" id="closeRegistrosBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="registros-container">
+            <h2>Equipos Registrados</h2>
+            <div class="registros-table-container">
+                <table class="registros-table" id="registrosTable">
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>Categoría</th>
+                            <th>Plataformas</th>
+                            <th>Integrantes</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Se llenará dinámicamente con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast de notificación -->
+    <div class="toast" id="toastNotification"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+                    
