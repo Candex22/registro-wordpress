@@ -10,4 +10,5 @@
 9. Crear la base de datos con nombre 'wordpress'
 10. Entrar a 'https://localhost/wordpress/wp-admin/install'
 11. Completar el formulario, la pagina debe llamarse 'Game jam' el resto es indistinto. (Copia la contraseña)
-12. Editar la pagina Game jam, borra todo lo de dentro y poner un bloque editable html, alli pegar el html adjunto
+12. Ir al apartado de apariencia y activar el tema 'twentytwentyfive hijo'
+13. Editar la pagina Game jam, borra todo lo de dentro y poner un bloque editable html, alli pegar el html adjunto
